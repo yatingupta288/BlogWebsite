@@ -1,4 +1,4 @@
-// require('dotenv').config()
+require('dotenv').config()
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
@@ -25,8 +25,8 @@ app.use(session({
 }))
 app.use(passport.initialize());
 app.use(passport.session());
-mongoose.connect("mongodb+srv://admin-yatin:Test123@cluster0.qhe83.mongodb.net/blogDb2", {useNewUrlParser : true});
-// mongodb+srv://admin-yatin:Test123@cluster0.qhe83.mongodb.net/blogDb2
+mongoose.connect("process.env.SOMETHING", {useNewUrlParser : true});
+
 const postSchema = new mongoose.Schema({
   title: String,
   content: String
