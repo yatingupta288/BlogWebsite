@@ -30,8 +30,14 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-mongoose.connect(process.env.SOMETHING, { useNewUrlParser: true });
-
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.SOMETHING, { useNewUrlParser: true });
+  } catch (error) {
+    handleError(error);
+  }
+};
+connectDB();
 const postSchema = new mongoose.Schema({
   title: String,
   content: String,
